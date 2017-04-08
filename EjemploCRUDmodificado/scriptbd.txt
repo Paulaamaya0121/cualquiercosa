@@ -1,0 +1,23 @@
+CREATE TABLE administrador.tbl_personal
+(
+  id_personal character varying NOT NULL,
+  nombre_personal character varying NOT NULL,
+  descripcion_personal character varying NOT NULL,
+  id_turno character varying NOT NULL,
+  CONSTRAINT id_personal PRIMARY KEY (id_personal),
+  CONSTRAINT id_turno FOREIGN KEY (id_turno)
+      REFERENCES administrador.tbl_turno (id_turno) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+
+CREATE TABLE administrador.tbl_turno
+(
+  id_turno character varying NOT NULL,
+  descripcion_turno character varying NOT NULL,
+  CONSTRAINT id_turno PRIMARY KEY (id_turno)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE administrador.tbl_teatro
+  OWNER TO postgres;
